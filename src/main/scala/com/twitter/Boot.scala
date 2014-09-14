@@ -28,17 +28,10 @@ object Config {
   val portTcp = config.getInt("service.ports.tcp")
   val portWs = config.getInt("service.ports.ws")
 
-  //database for both deployment and development
-  val extractPattern = """(\/\/)(.+?):(.+?)@""".r
-
-  val tempConnect = config.getString("db.postgresql.connect")
-  val dbConnect = if (!tempConnect.contains("postgresql"))
-    "jdbc:"+tempConnect.replace("postgres", "postgresql").replace("172.17.42.1", "104.131.214.249")
-  else tempConnect
-
-  val dbURL = extractPattern.replaceFirstIn(dbConnect, "//")
-  val dbUser = for (m <- extractPattern.findFirstMatchIn(dbConnect)) yield m.group(2)
-  val dbPassword = for (m <- extractPattern.findFirstMatchIn(dbConnect)) yield m.group(3)
+  //
+  val dbURL = config.getString("db.postgresql.url")
+  val dbUser = config.getString("db.postgresql.user")
+  val dbPassword = config.getString("db.postgresql.password")
   val dbDriver = config.getString("db.postgresql.driver")
 
 }

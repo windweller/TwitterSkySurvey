@@ -8,6 +8,8 @@ val buildSettings = Defaults.defaultSettings ++ Seq(
   javaOptions += "-Xmx4G -Xms4G"
 )
 
+mainClass in (Compile, run) := Some("com.twitter.Boot")
+
 resolvers ++= Seq("Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
   "Sonatype snapshots"  at "https://oss.sonatype.org/content/repositories/snapshots/")
 
@@ -33,7 +35,7 @@ libraryDependencies ++= {
     "org.twitter4j" % "twitter4j-core" % "4.0.2",
     "org.twitter4j" % "twitter4j-stream" % "4.0.2",
   //database
-    "com.typesafe.slick" %%  "slick"         % "2.0.2",
+    "com.typesafe.slick" %%  "slick"  % "2.1.0",
     "org.postgresql" % "postgresql" % "9.3-1102-jdbc41",
     "com.github.tminglei" %% "slick-pg" % "0.6.3",
     "com.github.tminglei" %% "slick-pg_json4s" % "0.6.3"

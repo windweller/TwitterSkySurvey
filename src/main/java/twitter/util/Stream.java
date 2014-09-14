@@ -19,6 +19,7 @@ public class Stream implements StatusListener{
             public void onStatus(Status status) {
                 System.out.println(status.getUser().getName() + " : " + status.getText());
                 try {
+                    //change this stupid part
                     Util.writeStringToFile("/Users/laralu/Desktop/stream.txt", status.getUser().getName() + " : " + status.getText() + "\n");
                 } catch (IOException e) {
                     e.printStackTrace();
